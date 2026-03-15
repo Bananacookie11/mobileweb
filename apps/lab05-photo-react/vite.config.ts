@@ -9,13 +9,8 @@ export default defineConfig({
     legacy()
   ],
   base: '/mobileweb/lab05_Photo_React/',
-  build: {
-    outDir: path.resolve(__dirname, '../../docs/lab05_Photo_React'),
-    emptyOutDir: true
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-  }
+build: {
+  outDir: path.resolve(__dirname, '../../docs/lab05_Photo_React'),
+  emptyOutDir: true
+}
 });

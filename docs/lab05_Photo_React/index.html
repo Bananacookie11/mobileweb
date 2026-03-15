@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 5 - Photo Gallery React</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body class="p-4">
-  <h2>Lab 5: Photo Gallery (Ionic React)</h2>
-  <p>แอป Photo Gallery พัฒนาด้วย Ionic React + Capacitor</p>
-
-  <h5 class="mt-4">เปิดแอป:</h5>
-  <a href="lab05_Photo_React/index.html" class="btn btn-primary">เปิด Photo Gallery (React)</a>
-
-  <h5 class="mt-4 mt-3">ดาวน์โหลดแอป Android:</h5>
-  <a href="app-debug.apk" class="btn btn-success">ดาวน์โหลด .apk</a>
-
-  <div class="mt-4">
-    <a href="index.html" class="btn btn-secondary">← กลับหน้าหลัก</a>
-  </div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ionic App</title>
+    
+    <base href="/mobileweb/lab05_Photo_React/" />
+    
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <link rel="manifest" href="/mobileweb/lab05_Photo_React/manifest.json" />
+    
+    <link rel="shortcut icon" type="image/png" href="/mobileweb/lab05_Photo_React/favicon.png" />
+    
+    <!-- add to homescreen for ios -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Ionic App" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="module" crossorigin src="/mobileweb/lab05_Photo_React/assets/index-B342l3On.js"></script>
+    <link rel="stylesheet" crossorigin href="/mobileweb/lab05_Photo_React/assets/index-DmzoLFj2.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/mobileweb/lab05_Photo_React/assets/polyfills-legacy-8nqjBJeF.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/mobileweb/lab05_Photo_React/assets/index-legacy-C1goVrVL.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
 </html>
