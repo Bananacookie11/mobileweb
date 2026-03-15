@@ -20,10 +20,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom'
   },
-  base: '/mobileweb/lab04_Photo_Gallery/',
-  build: {
-    outDir: path.resolve(__dirname, '../../docs/lab04_Photo_Gallery'),
-    emptyOutDir: true
-  },
+base: '/mobileweb/lab04_Photo_Gallery/',
+build: {
+  outDir: path.resolve(__dirname, '../../docs/lab04_Photo_Gallery'),
+  emptyOutDir: true
+},
 })
 
