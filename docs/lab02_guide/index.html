@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKU Campus Guide</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: #f5a623;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    header h2 {
+      font-size: 1.4rem;
+      color: white;
+      margin-top: 8px;
+    }
+
+    header p {
+      color: white;
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* ===== CANVAS LOGO ===== */
+    #kku-canvas {
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ===== PLACE CARD ===== */
+    .place-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .place-card h3 {
+      color: #e87722;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    /* ===== IMAGE GRID (2 รูปต่อสถานที่) ===== */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .place-card p {
+      line-height: 1.7;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* ===== FORM SECTION ===== */
+    .form-section {
+      background: white;
+      border-radius: 12px;
+      padding: 40px 30px;
+      max-width: 500px;
+      margin: 0 auto 40px auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .form-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .form-divider {
+      width: 50px;
+      height: 3px;
+      background: #f5a623;
+      margin: 8px auto 24px auto;
+      border-radius: 2px;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #f5a623;
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #f5a623;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #e09000;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #f5a623;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    /* ===== RESPONSIVE (Media Query) ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr; /* มือถือ: แสดงรูปเดียว */
+      }
+
+      .image-grid img {
+        height: 220px;
+      }
+
+      main {
+        padding: 0 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER + CANVAS LOGO ===== -->
+  <header>
+    <canvas id="kku-canvas" width="300" height="120"></canvas>
+    <h2>KKU Campus Guide</h2>
+    <p>คู่มือแนะนำสถานที่น่าสนใจในมหาวิทยาลัยขอนแก่น</p>
+  </header>
+
+  <!-- ===== สถานที่ 4 แห่ง ===== -->
+  <main>
+
+    <!-- สถานที่ 1: บึงสีฐาน -->
+    <article class="place-card">
+      <h3>บึงสีฐาน (Sithan Lake)</h3>
+      <div class="image-grid">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJXMS3d8Uh6Vy3DBBjbqZ5hhIHoY1F7jQAqw&s"
+          alt="บึงสีฐาน มุมมองกว้าง"
+        />
+        <img
+          src="https://come.in.th/wp-content/uploads/2023/06/1-1.png"
+          alt="บึงสีฐาน ยามเย็น"
+          onerror="this.src='https://placehold.co/400x200/f5a623/white?text=Sithan+Lake'"
+        />
+      </div>
+      <p>
+        บึงสีฐานเป็นสัญลักษณ์ที่สำคัญของมหาวิทยาลัยขอนแก่น ตั้งอยู่ใจกลางมหาวิทยาลัย
+        เป็นแหล่งพักผ่อนและออกกำลังกายยอดนิยมของนักศึกษา อาจารย์ และบุคลากร
+        รอบบึงมีทางเดินและลู่วิ่งที่สวยงาม เหมาะสำหรับการพักผ่อนหย่อนใจและถ่ายภาพ
+      </p>
+    </article>
+
+    <!-- สถานที่ 2: หอศิลปวัฒนธรรม -->
+    <article class="place-card">
+      <h3>หอศิลปวัฒนธรรม (KKU Art & Culture Museum)</h3>
+      <div class="image-grid">
+        <img
+          src="https://cbtthailand.dasta.or.th/upload-file-api/Resources/RelateAttraction/Images/RAT400192/1.jpeg"
+          alt="หอศิลปวัฒนธรรม มข."
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hd2CrD_xiu8pbQbv9IVyKN_tjtL7gMbLUA&s"
+          alt="ภายในพิพิธภัณฑ์"
+        />
+      </div>
+      <p>
+        ศูนย์รวมงานศิลปะและวัฒนธรรมของภาคอีสานและมหาวิทยาลัย มีการจัดแสดงนิทรรศการ
+        ทั้งแบบถาวรและชั่วคราว ได้แก่ งานศิลปะร่วมสมัย ประวัติศาสตร์ ภาพถ่าย
+        และมรดกวัฒนธรรมท้องถิ่น เปิดให้เข้าชมฟรีในเวลาราชการ
+      </p>
+    </article>
+
+    <!-- สถานที่ 3: สำนักหอสมุด -->
+    <article class="place-card">
+      <h3>สำนักหอสมุด (Central Library)</h3>
+      <div class="image-grid">
+        <img
+          src="https://library.kku.ac.th/wp-content/uploads/2023/06/2222-1024x576.png"
+          alt="สำนักหอสมุด มข."
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVMICLnYJv6uut750ettXyYNo2AXIC3VfmmQ&s"
+          alt="Wisdom Hub ภายในหอสมุด"
+        />
+      </div>
+      <p>
+        ห้องสมุดกลางของมหาวิทยาลัย มีหนังสือ สื่อดิจิทัล และพื้นที่ Co-working space
+        ให้บริการ รองรับการอ่านหนังสือ ทำรายงาน และเตรียมสอบ มี Wi-Fi ความเร็วสูง
+        และปลั๊กไฟทุกโต๊ะ เปิดบริการตลอดสัปดาห์
+      </p>
+    </article>
+
+    <!-- สถานที่ 4: คอมเพล็กซ์ มข. -->
+    <article class="place-card">
+      <h3>คอมเพล็กซ์ มข. (KKU Complex)</h3>
+      <div class="image-grid">
+        <img
+          src="https://asset.kku.ac.th/wp-content/uploads/2022/04/%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3-1-%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B9%8C-%E0%B8%99.%E0%B8%AA.%E0%B8%88%E0%B8%B8%E0%B8%91%E0%B8%B2%E0%B8%A3%E0%B8%B1%E0%B8%95%E0%B8%99%E0%B9%8C-%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%81%E0%B8%B8%E0%B8%A5-5-1024x768.jpg"
+          alt="KKU Complex ภายนอก"
+        />
+        <img
+          src="https://asset.kku.ac.th/wp-content/uploads/2022/04/Cozy-1024x768.jpg"
+          alt="Food Court ภายใน Complex"
+        />
+      </div>
+      <p>
+        ศูนย์ร่วมค้าและบริการภายในมหาวิทยาลัย มีร้านอาหาร ร้านกาแฟ ร้านค้า
+        ซูเปอร์มาร์เก็ต และธนาคาร ให้บริการครบครัน เหมาะสำหรับนักศึกษาและบุคลากร
+        ที่ต้องการใช้บริการแบบครบวงจรในที่เดียว
+      </p>
+    </article>
+
+    <!-- ===== FORM แนะนำสถานที่ใหม่ ===== -->
+    <section class="form-section">
+      <h3>แนะนำสถานที่ใหม่</h3>
+      <div class="form-divider"></div>
+
+      <!--
+        วิธีใช้ Web3Forms:
+        1. ไปที่ https://web3forms.com/
+        2. กรอก email ของคุณ
+        3. คัดลอก access_key ที่ได้รับ
+        4. ใส่แทน YOUR_ACCESS_KEY ด้านล่าง
+      -->
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="036b7879-a191-457d-a862-960292d81b35" />
+        <input type="hidden" name="subject" value="แนะนำสถานที่ใหม่ใน KKU" />
+
+        <div class="form-group">
+          <label>ชื่อสถานที่</label>
+          <input type="text" name="place_name" placeholder="กรุณาป้อนชื่อสถานที่" required />
+        </div>
+
+        <div class="form-group">
+          <label>รายละเอียด</label>
+          <textarea name="description" placeholder="บรรยายรายละเอียดเกี่ยวกับสถานที่" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>ลิงก์ภาพ (URL)</label>
+          <input type="url" name="image_url" placeholder="https://example.com/image.jpg" />
+        </div>
+
+        <button type="submit" class="btn-submit">ส่งข้อมูล</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>จัดทำโดย <strong>นายพรศิลป์ สมบูรณ์เทอดธนา</strong></p>
+    <p>รหัสนักศึกษา: 653380336-9</p>
+    <p>© 2568 Khon Kaen University</p>
+  </footer>
+
+  <!-- ===== CANVAS ANIMATION SCRIPT ===== -->
+  <script>
+    const canvas = document.getElementById('kku-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let alpha = 0;        // ความโปร่งใส (fade in)
+    let scale = 0.5;      // ขนาด (zoom in)
+    let animDone = false;
+
+    // วาด logo KKU พร้อม animation fade + zoom
+    function drawLogo() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      // พื้นหลัง (สีส้ม KKU)
+      ctx.fillStyle = '#f5a623';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // ตัวอักษร KKU
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.scale(scale, scale);
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 64px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('KKU', 0, 0);
+
+      ctx.restore();
+
+      // Animation: เพิ่ม alpha และ scale
+      if (!animDone) {
+        alpha += 0.03;
+        scale += 0.015;
+        if (alpha >= 1) { alpha = 1; }
+        if (scale >= 1) { scale = 1; animDone = true; }
+        requestAnimationFrame(drawLogo);
+      } else {
+        // หลัง animation เสร็จ: วาดวงกลมตกแต่ง
+        startPulse();
+      }
+    }
+
+    // Animation วงกลมกระพริบรอบตัวอักษร
+    let pulseRadius = 0;
+    let pulseAlpha = 1;
+
+    function startPulse() {
+      function pulse() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // วาดพื้นหลังใหม่
+        ctx.fillStyle = '#f5a623';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // วาดวงกลมขยาย
+        ctx.save();
+        ctx.globalAlpha = pulseAlpha;
+        ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, 40 + pulseRadius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // วาดตัวอักษร KKU
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 64px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('KKU', canvas.width / 2, canvas.height / 2);
+
+        pulseRadius += 1;
+        pulseAlpha -= 0.02;
+
+        if (pulseAlpha <= 0) {
+          pulseRadius = 0;
+          pulseAlpha = 1;
+        }
+
+        requestAnimationFrame(pulse);
+      }
+      pulse();
+    }
+
+    // เริ่ม animation
+    drawLogo();
+  </script>
+
+</body>
+</html>
