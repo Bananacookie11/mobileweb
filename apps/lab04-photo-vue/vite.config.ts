@@ -19,5 +19,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom'
-  }
+  },
+  build: {
+    outDir: path.resolve(__dirname, '../../docs/lab04_Photo_Gallery'),
+    emptyOutDir: true
+  },
 })
+
