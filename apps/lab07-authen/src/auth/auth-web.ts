@@ -17,12 +17,12 @@ import type {
 
 // ใส่ค่าจาก Firebase Console ของคุณ
 const firebaseConfig = {
-  apiKey: "ใส่ค่าจริง",
-  authDomain: "ใส่ค่าจริง",
-  projectId: "ใส่ค่าจริง",
-  storageBucket: "ใส่ค่าจริง",
-  messagingSenderId: "ใส่ค่าจริง",
-  appId: "ใส่ค่าจริง",
+  apiKey: "AIzaSyAi1HLGaW_bXOlo7MqUh4oFz8FxYBEPqug",
+  authDomain: "lab06-expense-33286.firebaseapp.com",
+  projectId: "lab06-expense-33286",
+  storageBucket: "lab06-expense-33286.firebasestorage.app",
+  messagingSenderId: "613705045109",
+  appId: "1:613705045109:web:80e367cc97d1e366e7143c"
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);
