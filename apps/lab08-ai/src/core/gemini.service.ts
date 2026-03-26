@@ -1,35 +1,32 @@
 import type { Base64Image, ImageAnalysisResult } from "./ai.interface";
 import { getAI, getGenerativeModel, GoogleAIBackend } from "firebase/ai";
 import { app } from "./firebase";
-import { imageAnalysisSchema } from "./ai.interface";
 
-// เชื่อมต่อ Firebase AI
 export const ai = getAI(app, { backend: new GoogleAIBackend() });
 
-// สร้าง model พร้อมกำหนดว่าต้องตอบเป็น JSON ตาม schema
 export const visionModel = getGenerativeModel(ai, {
-  model: "gemini-2.5-flash",
-  generationConfig: {
-    responseMimeType: "application/json",
-    responseSchema: imageAnalysisSchema,
-  },
+  model: "gemini-2.0-flash",
 });
 
 export class GeminiVisionService {
   static async analyze(image: Base64Image): Promise<ImageAnalysisResult> {
-    const prompt =
-      `วิเคราะห์ภาพนี้และตอบกลับตาม JSON schema เท่านั้น\n` +
-      `- caption: คำบรรยายสั้น 1 ประโยคภาษาไทย\n` +
-      `- tags: keyword 3-8 คำ\n` +
-      `- objects: ถ้าเห็นวัตถุเด่นให้ระบุชื่อ\n` +
-      `- safety: ถ้าเป็นภาพอ่อนไหวให้ทำเครื่องหมาย`;
+    const prompt = `วิเคราะห์ภาพนี้แล้วตอบกลับเป็น JSON เท่านั้น ห้ามมีข้อความอื่น ห้ามมี markdown
+ตอบในรูปแบบนี้เท่านั้น:
+{
+  "caption": "คำบรรยายภาพ 1 ประโยคภาษาไทย",
+  "tags": ["tag1", "tag2", "tag3"],
+  "objects": [{"name": "ชื่อวัตถุ"}],
+  "safety": {"isSensitive": false}
+}`;
 
     const imagePart = {
       inlineData: { data: image.base64, mimeType: image.mimeType },
     };
 
     const resp = await visionModel.generateContent([prompt, imagePart]);
-    const text = resp.response.text() ?? "{}";
+    let text = resp.response.text() ?? "{}";
+    text = text.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+    
     return JSON.parse(text) as ImageAnalysisResult;
   }
 }
